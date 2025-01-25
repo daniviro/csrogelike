@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cog45ys1kjpvo"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_auijv"]
+[ext_resource type="Texture2D" uid="uid://cq0dndd8jky4u" path="res://images/2z_R9t.png" id="2_4t6a6"]
+[ext_resource type="AudioStream" uid="uid://xutlsgyjmmuw" path="res://sounds/pium.wav" id="3_k3it5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvca8"]
+size = Vector2(22, 1)
+
+[node name="Bala" type="CharacterBody2D"]
+z_index = 10
+script = ExtResource("1_auijv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0555556, 0.0555556)
+texture = ExtResource("2_4t6a6")
+offset = Vector2(198, 1)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(3204, 2511, 396, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_rvca8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="pium" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_k3it5")
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

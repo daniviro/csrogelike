@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ijr82ji53en4"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_sncmq"]
+[ext_resource type="PackedScene" uid="uid://cog45ys1kjpvo" path="res://bala.tscn" id="2_s7f2s"]
+[ext_resource type="Texture2D" uid="uid://ybhsr7vk5umg" path="res://images/survivor-idle_shotgun_0.png" id="3_eim3u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbj7t"]
+radius = 51.948
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_sncmq")
+bullet_scene = ExtResource("2_s7f2s")
+
+[node name="player2" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(0.154, 0.156061)
+texture = ExtResource("3_eim3u")
+offset = Vector2(38.961, -25.631)
+
+[node name="cañon2" type="Node2D" parent="player2"]
+position = Vector2(149.351, 12.8155)
+scale = Vector2(6.49351, 6.40775)
+
+[node name="ColorRect" type="ColorRect" parent="player2/cañon2"]
+offset_top = -1.0
+offset_right = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(0.154, 0.156061)
+shape = SubResource("CircleShape2D_bbj7t")

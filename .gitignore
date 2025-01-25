@@ -1,15 +1,43 @@
-# Godot 4+ specific ignores
+# Godot-specific files
 .godot/
-
-# Godot-specific ignores
 .import/
 export.cfg
 export_presets.cfg
 
-# Imported translations (automatically generated from CSV files)
-*.translation
-
-# Mono-specific ignores
+# Godot Mono-specific files
 .mono/
-data_*/
-mono_crash.*.json
+GodotSharp/
+
+# Editor-specific files
+*.tmp
+*.swp
+*.bak
+*.log
+*.db
+*.sconsign.dblite
+*.mono_
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build artifacts
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+*.class
+*.jar
+*.pdb
+
+# User-specific files
+*.local
+*.user
+*.sublime-workspace
+
+# Cache files
+.cache/
+.idea/
+.vscode/
