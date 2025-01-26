@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bo34wkw8yri7a" path="res://images/crosshair-red.png" id="2_om432"]
 
 [node name="crosshair" type="Sprite2D"]
-scale = Vector2(0.05, 0.05)
+z_index = 100
+scale = Vector2(0.02, 0.02)
 texture = ExtResource("1_bvldh")
 script = ExtResource("2_i5b7e")
 green_texture = ExtResource("1_bvldh")

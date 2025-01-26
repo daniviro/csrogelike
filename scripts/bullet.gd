@@ -1,10 +1,10 @@
 extends CharacterBody2D
+class_name Bullet
 
 @export var speed = 800
 var direction = Vector2.ZERO
 
 func _ready():
-	$pium.play()
 	$Timer.start()
 	
 func _on_Timer_timeout():
@@ -13,4 +13,10 @@ func _on_Timer_timeout():
 func _physics_process(delta):
 	# Mueve la bala en la dirección especificada
 	velocity = direction * speed
-	move_and_collide(velocity * delta)
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		var collider = collision.get_collider()
+		
+		if collider is Enemy:
+			queue_free()
+			collider.hit()

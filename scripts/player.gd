@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 200
+var speed = 150
 @export var bullet_scene: PackedScene
 @export var bullets: Node2D
 var fire_point: Node2D  # Punto de disparo, como un Node2D en el arma
@@ -34,8 +34,7 @@ func shoot():
 	bullet.direction = mouse_direction
 	bullet.rotation = mouse_direction.angle()
 	bullets.add_child(bullet)
-
-
+	$pium.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -44,7 +43,8 @@ func _process(delta):
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-	position += direction.normalized() * speed * delta
+	var shifting = Input.get_action_strength("shift") > 0
+	position += direction.normalized() * (speed / (2 if shifting else 1)) * delta
 	
 	var mouse_position = get_global_mouse_position()
 	$"player2".look_at(mouse_position)
